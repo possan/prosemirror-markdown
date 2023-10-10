@@ -271,8 +271,8 @@ export class MarkdownSerializerState {
 
   /// Render the contents of `parent` as inline content.
   renderInline(parent: Node) {
-    this.atBlockStart = true
-    let active: Mark[] = [], trailing = ""
+    this.atBlockStart = parent.type.name !== "heading";
+    let active: Mark[] = [], trailing = "";
     let progress = (node: Node | null, offset: number, index: number) => {
       let marks = node ? node.marks : []
 

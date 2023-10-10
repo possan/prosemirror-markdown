@@ -258,4 +258,8 @@ describe("markdown", () => {
     const mdText = defaultMarkdownSerializer.serialize(doc(schema.node("code_block", {params: ""}, [schema.text(originalText)])))
     same(mdText, doc(schema.node("code_block", {params: ""}, [schema.text(originalText)])))
   })
+
+  it("headings with leading numbers in shouldn't be escaped", () => {
+    same("## 1. heading text", doc(schema.node("heading", { level: 2 }, [schema.text("1. heading text")])))
+  })
 })
